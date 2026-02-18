@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geographical Map</title>
+
+    <!-- ArcGIS CSS -->
+    <link rel="stylesheet"
+          href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+
+    <!-- ArcGIS JS -->
+    <script src="https://js.arcgis.com/4.29/"></script>
+
+    <style>
+        html, body, #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        h2 {
+            position: absolute;
+            z-index: 99;
+            background: white;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 6px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Geographical Project Map</h2>
+
+<div id="viewDiv"></div>
+
+<script>
+    require([
+      "esri/Map",
+      "esri/views/MapView"
+    ], function(Map, MapView) {
+
+      // Create map with basemap
+      const map = new Map({
+          basemap: "streets-navigation-vector"
+      });
+
+      // Create map view
+      const view = new MapView({
+          container: "viewDiv",
+          map: map,
+          center: [78.9629, 20.5937], // India center
+          zoom: 4
+      });
+
+    });
+</script>
+
+</body>
+</html>

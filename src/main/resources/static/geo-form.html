@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Attractive HTML Form</title>
+    <style>
+        body {
+            background-color: #87CEEB;
+            font-family: Arial;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #104E8B;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Employee Registration Form</h2>
+
+<!-- IMPORTANT: change action -->
+<form action="/geo/save" method="post">
+
+    <label>GdId</label><br>
+    <input type="text" name="gdId"><br><br>
+
+    <label>UUId</label><br>
+    <input type="text" name="uuid"><br><br>
+
+    <label>UserName</label><br>
+    <input type="text" name="userName"><br><br>
+
+    <label>Latitude</label><br>
+    <input type="text" name="latitude"><br><br>
+
+    <label>Longitude</label><br>
+    <input type="text" name="longitude"><br><br>
+
+    <label>Description</label><br>
+    <input type="text" name="description"><br><br>
+
+    <label>Remarks</label><br>
+    <input type="text" name="remarks"><br><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+</body>
+
+</html>
