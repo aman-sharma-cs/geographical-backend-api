@@ -22,6 +22,9 @@ public class GeographicalData {
     @Column(name = "gd_id")
     private Long gdId;
 
+
+
+
     @Column(name = "uuid", nullable = false)
     private String uuid;
 

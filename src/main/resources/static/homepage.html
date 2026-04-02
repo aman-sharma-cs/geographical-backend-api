@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geographical Management System</title>
+
+    <style>
+
+        /* ===== GLOBAL ===== */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg,#eef2f7,#d9e4f5);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            margin-left: 25px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1abc9c;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 30px;
+        }
+
+        .hero h1 {
+            color: #2c3e50;
+            font-size: 36px;
+        }
+
+        .hero p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        /* ===== CARD SECTION ===== */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== CARD STYLE ===== */
+        .card {
+            width: 320px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            color: #2c3e50;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* ===== BUTTON ===== */
+        .btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .user-btn {
+            background: #1abc9c;
+        }
+
+        .user-btn:hover {
+            background: #16a085;
+        }
+
+        .admin-btn {
+            background: #e74c3c;
+        }
+
+        .admin-btn:hover {
+            background: #c0392b;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+    <div class="logo">🌍 GeoSystem</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+
+    </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+    <h1>Geographical Management System</h1>
+    <p>Manage and visualize geographical data efficiently with role-based access.</p>
+</div>
+
+<!-- ===== ACCESS CARDS ===== -->
+<div class="card-container">
+
+    <!-- USER CARD -->
+    <div class="card">
+        <h2>👤 User Access</h2>
+        <p>
+            View and manage your geographical locations,
+            explore map data and track saved coordinates.
+        </p>
+        <button class="btn user-btn"
+                onclick="location.href='login.html'">
+            Login as User
+        </button>
+    </div>
+
+    <!-- ADMIN CARD -->
+    <div class="card">
+        <h2>🛠 Admin Access</h2>
+        <p>
+            Manage users, monitor geographical entries,
+            and control system data securely.
+        </p>
+        <button class="btn admin-btn"
+                onclick="location.href='login.html'">
+            Login as Admin
+        </button>
+    </div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+    © 2026 Geographical Management System | Built with Spring Boot & ArcGIS
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "admin_dashboard": "Admin Dashboard",
+  "manage_data": "Manage users and geographical data",
+  "total_users": "Total Users",
+  "geo_records": "Geographical Records",
+  "admin_users": "Admin Users",
+  "all_users": "All Users",
+  "all_geo": "All Geographical Data",
+  "search_users": "Search users by username, email, or role...",
+  "search_geo": "Search by user, description, or remarks...",
+  "logout": "Logout"
+}

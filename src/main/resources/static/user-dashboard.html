@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.29/"></script>
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:"Segoe UI";
+            background:#f1f5f9;
+            color:#1e293b;
+            display:flex;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar{
+            width:240px;
+            background:#ffffff;
+            height:100vh;
+            padding:20px;
+            border-right:1px solid #e2e8f0;
+        }
+
+        .logo{
+            font-size:20px;
+            font-weight:bold;
+            color:#4f46e5;
+            margin-bottom:30px;
+        }
+
+        .menu a{
+            display:block;
+            padding:10px;
+            margin:8px 0;
+            border-radius:6px;
+            cursor:pointer;
+            color:#1e293b;
+        }
+
+        .menu a:hover{
+            background:#f1f5f9;
+        }
+
+        .menu .active{
+            background:#eef2ff;
+            color:#4f46e5;
+        }
+
+        .logout{
+            margin-top:30px;
+            background:#ef4444;
+            color:white;
+            padding:10px;
+            border-radius:6px;
+            text-align:center;
+            cursor:pointer;
+        }
+
+        /* MAIN */
+
+        .main{
+            flex:1;
+            padding:30px;
+        }
+
+        /* HEADER */
+
+        .header h1{
+            margin:0;
+            color:#4f46e5;
+        }
+
+        .header p{
+            color:#64748b;
+            margin-top:5px;
+        }
+
+        /* CARDS */
+
+        .cards{
+            display:flex;
+            gap:20px;
+            margin-top:20px;
+            margin-bottom:25px;
+        }
+
+        .card{
+            flex:1;
+            background:#ffffff;
+            padding:20px;
+            border-radius:10px;
+            border:1px solid #e2e8f0;
+            transition:0.2s;
+        }
+
+        .card:hover{
+            box-shadow:0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h2{
+            margin:0;
+        }
+
+        .card p{
+            color:#64748b;
+        }
+
+        /* BUTTON */
+
+        .add-btn{
+            background:#4f46e5;
+            color:white;
+            padding:10px 16px;
+            border:none;
+            border-radius:6px;
+            margin-bottom:15px;
+            cursor:pointer;
+        }
+
+        /* TABLE */
+
+        .table-box{
+            background:#ffffff;
+            padding:20px;
+            border-radius:10px;
+            border:1px solid #e2e8f0;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            text-align:left;
+            padding:12px;
+            color:#475569;
+            border-bottom:2px solid #e2e8f0;
+        }
+
+        td{
+            padding:12px;
+            border-bottom:1px solid #e2e8f0;
+        }
+
+        tr:hover{
+            background:#f8fafc;
+        }
+
+        /* STATUS */
+
+        .badge{
+            background:#dcfce7;
+            color:#166534;
+            padding:5px 12px;
+            border-radius:20px;
+            font-size:12px;
+        }
+.pagination-info{
+    color:#1e293b;   /* dark readable */
+    font-weight:600;
+}
+}
+
+    </style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">🌍 GeoExplorer</div>
+
+    <div class="menu">
+        <a class="active">My Dashboard</a>
+        <a onclick="addData()">Add New Data</a>
+    </div>
+
+    <div class="logout" onclick="logout()">Logout</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+    <div class="header">
+        <h1>My Dashboard</h1>
+        <p>View and manage your geographical data</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2 id="totalRecords">0</h2>
+            <p>My Records</p>
+        </div>
+
+        <div class="card">
+            <h2 id="activeRecords">0</h2>
+            <p>Active Records</p>
+        </div>
+
+        <div class="card">
+            <h2>24/7</h2>
+            <p>Data Access</p>
+        </div>
+
+    </div>
+
+    <button class="add-btn" onclick="addData()">+ Add New Geographical Data</button>
+
+    <div class="table-box">
+
+        <h2>My Geographical Data</h2>
+
+        <input type="text" id="searchGeo"
+               placeholder="Search my geo data..."
+               style="width:100%;padding:10px;margin-bottom:15px;border-radius:6px;border:1px solid #e2e8f0;">
+
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Description</th>
+                <th>Remarks</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+
+            <tbody id="geoTable"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script src="user-dashboard.js"></script>
+
+</body>
+</html>

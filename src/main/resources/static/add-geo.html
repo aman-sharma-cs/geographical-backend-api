@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Geographical Data</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.29/"></script>
+
+    <style>
+
+        body{
+        font-family:Segue UI;
+        margin:0;
+        background:#0f0f1a;
+        color:white;
+        padding:30px;
+        }
+
+        input{
+        width:100%;
+        padding:10px;
+        margin-top:10px;
+        border-radius:8px;
+        border:none;
+        }
+
+        button{
+        margin-top:20px;
+        padding:12px 20px;
+        background:#8b5cf6;
+        color:white;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        }
+
+        #viewDiv{
+        height:400px;
+        margin-top:20px;
+        border-radius:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h2>Add Geographical Data</h2>
+
+<label>Description</label>
+<input type="text" id="description">
+
+<label>Remarks</label>
+<input type="text" id="remarks">
+
+<div id="viewDiv"></div>
+
+<button onclick="saveData()">Save Location</button>
+
+<script>
+
+    let lat=null;
+    let lon=null;
+
+    require([
+    "esri/Map",
+    "esri/views/MapView",
+    "esri/Graphic"
+    ], function(Map, MapView, Graphic){
+
+    const map = new Map({
+    basemap:"streets-navigation-vector"
+    });
+
+    const view = new MapView({
+    container:"viewDiv",
+    map:map,
+    center:[78.9629,20.5937],
+    zoom:5
+    });
+
+    view.on("click", function(event){
+
+    lat=event.mapPoint.latitude;
+    lon=event.mapPoint.longitude;
+
+    view.graphics.removeAll();
+
+    const point={
+    type:"point",
+    longitude:lon,
+    latitude:lat
+    };
+
+    const marker={
+    type:"simple-marker",
+    color:"blue",
+    size:"10px"
+    };
+
+    const graphic=new Graphic({
+    geometry:point,
+    symbol:marker
+    });
+
+    view.graphics.add(graphic);
+
+    });
+
+    });
+
+    function saveData(){
+
+    const user=JSON.parse(localStorage.getItem("loggedInUser"));
+
+    const description=document.getElementById("description").value;
+    const remarks=document.getElementById("remarks").value;
+
+    fetch("http://localhost:8080/api/geo/add",{
+
+    method:"POST",
+
+    headers:{
+    "Content-Type":"application/json"
+    },
+
+    body:JSON.stringify({
+
+    username:user.userName,
+    latitude:lat,
+    longitude:lon,
+    description:description,
+    remarks:remarks
+
+    })
+
+    })
+
+    .then(res=>res.json())
+
+    .then(data=>{
+
+    alert("Location saved successfully");
+
+    window.location.href="user-dashboard.html";
+
+    });
+
+    }
+
+</script>
+<script src="add-geo.js"></script>
+
+</body>
+</html>
